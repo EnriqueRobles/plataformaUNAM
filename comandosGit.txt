@@ -1,0 +1,13 @@
+Comandos git:
+git --version : nos dice en que version de git estamos trabajando
+
+git help : manual donde explican los comandos mas usados
+
+git config --global user.name "nomobre" : colocas nombre 
+git config --global user.name : devuleve el nombre de usuario
+
+ git config --global user.email "email"
+
+
+
+
