@@ -8,6 +8,10 @@ git config --global user.name : devuleve el nombre de usuario
 
  git config --global user.email "email"
 
+Descargar wampp, 
 
+https://www.youtube.com/watch?v=mx67Re19XlQ
 
-
+postgress y git 
+https://www.youtube.com/watch?v=RgP1njsQO0g
+https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
