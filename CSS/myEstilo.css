@@ -1,11 +1,26 @@
-body{
+body {
     background: #FAFAD2;
-    background: linear-gradient(to left, #FAFAD2 , #ffe251);
+    background: linear-gradient(to left, #FAFAD2, #ffe251);
 }
 
-.bg{
+.bg {
     background-image: url(../IMG/logo-unam.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: auto;
+}
+
+/*color links*/
+.a:link {
+    color: blue;
+}
+
+/* mouse over link */
+.a:hover {
+    color: red;
+}
+
+/* selected link */
+.a:active {
+    color: yellowgreen;
 }
