@@ -15,3 +15,6 @@ https://www.youtube.com/watch?v=mx67Re19XlQ
 postgress y git 
 https://www.youtube.com/watch?v=RgP1njsQO0g
 https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+
+conexion exitosa php:
+https://www.youtube.com/watch?v=SKeZhAfiEPY
