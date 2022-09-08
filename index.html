@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link href="CSS/myEstilo.css" rel="stylesheet">
 
 </head>
+
 <body>
     <!--Se coloca imagen y formulario-->
     <div class="container mt-5">
@@ -18,35 +20,23 @@
             <!--Se hace el breakpoint de la imagen-->
             <div class="col bg d-none d-lg-block"></div>
             <div class="col">
-                <h2 class="fw-bold text-center py-5">Bienvenido</h2>
-                <!--Formulario login-->
-                <form action="#">
-                    <!--Campos a Rellenar-->
-                    <div class="mb-4">
-                        <label for="email" class="form-label">Correo</label>
-                        <input type="email" class="form-control" name="email"> 
-                    </div>
-                    <div class="mb-4">
-                        <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" name="password"> 
-                    </div>
+                <h2 class="fw-bold text-center py-5">Bienvenidos</h2>
 
-                    <!--Boton-->
-                    <div class="d-grid">
-                        <button type="button" class="btn btn-primary">Iniciar Sesión</button>
-                    </div>
+                <!--Campos a Rellenar-->
+                <div class="mb-4">
+                    <label for="email" class="form-label">Selecciona el Perfil: </label>
 
-                    <!--Link Registro-->
-                    <div class="my-3">
-                        <span>No tienes cuenta? <a class="a" href="registroAlumnos.html">Registro Alumno</a> </span> <a class="a" href="registroProfesores.html">Registro Profesor</a>
-                    </div>
-                </form>
+                </div>
+                <div class="mb-4">
+                    <a class="a" href="loginProfesor.html">Profesor</a>
+                    <a class="a" href="loginAlumno.html">Alumnos</a>
+                </div>
             </div>
         </div>
     </div>
 
-
-    <script src="JS/bootstrap.bundle.min.js" ></script>
-    <script src="JS/bootstrap.min.js" ></script>
+    <script src="JS/bootstrap.bundle.min.js"></script>
+    <script src="JS/bootstrap.min.js"></script>
 </body>
+
 </html>

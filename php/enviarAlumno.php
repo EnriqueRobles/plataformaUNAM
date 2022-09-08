@@ -35,7 +35,7 @@ if (isset($_POST['register'])) {
     $password = $_POST['password'];
     $password_hash = password_hash($password, PASSWORD_BCRYPT);
  
-    $query = $connection->prepare("SELECT * FROM public.profesor WHERE email=:email");
+    $query = $connection->prepare("SELECT * FROM public.alumno WHERE email=:email");
     $query->bindParam("email", $email, PDO::PARAM_STR);
     $query->execute();
  
@@ -44,7 +44,7 @@ if (isset($_POST['register'])) {
     }
  
     if ($query->rowCount() == 0) {
-        $query = $connection->prepare("INSERT INTO public.profesor(ap_paterno,ap_materno,nombre,email,contrasena) VALUES (:ap_paterno,:ap_materno,:nombre,:email,:password_hash)");
+        $query = $connection->prepare("INSERT INTO public.alumno(ap_paterno,ap_materno,nombre,email,contrasena) VALUES (:ap_paterno,:ap_materno,:nombre,:email,:password_hash)");
         $query->bindParam("ap_paterno", $ap_paterno, PDO::PARAM_STR);
         $query->bindParam("ap_materno", $ap_materno, PDO::PARAM_STR);
         $query->bindParam("nombre", $nombre, PDO::PARAM_STR);

@@ -17,3 +17,6 @@ create table profesor(
 	email varchar(150) not null,
 	contrasena varchar(8) not null
 );
+
+drop database "plataformaUnam";
+

@@ -18,3 +18,7 @@ https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 
 conexion exitosa php:
 https://www.youtube.com/watch?v=SKeZhAfiEPY
+
+https://parzibyte.me/blog/2019/06/17/conectar-postgresql-php-pdo-crud/
+
+https://code.tutsplus.com/es/tutorials/create-a-php-login-form--cms-33261
