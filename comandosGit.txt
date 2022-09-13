@@ -167,3 +167,32 @@ $ret = pg_query($cnx, $query);
 pg_close();
 
 ?>
+
+********************
+
+<?php
+
+ include('conexion.php');
+ session_start();
+$usu = $_POST["email"];
+$pass = $_POST["password"];
+$rol = $_POST["rol"];
+
+if ($nr == 1 )  
+	{ 
+		if ($rol=="Alumno")
+			{
+				header("Location: pag_alumno.php");
+			}
+	}
+else if ($nr2 == 1){
+		if($rol=="Profesor"){	
+				header("Location: pag_profesor.php");
+			}
+}else{
+	echo "<script> alert('Usuario, contraseña o rol incorrecto.');window.location= '../index.html' </script>";
+	
+}
+
+	pg_close()
+?>
