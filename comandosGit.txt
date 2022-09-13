@@ -8,6 +8,162 @@ git config --global user.name : devuleve el nombre de usuario
 
  git config --global user.email "email"
 
+Descargar wampp, 
+
+https://www.youtube.com/watch?v=mx67Re19XlQ
+
+postgress y git 
+https://www.youtube.com/watch?v=RgP1njsQO0g
+https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+
+conexion exitosa php:
+https://www.youtube.com/watch?v=SKeZhAfiEPY
+
+https://parzibyte.me/blog/2019/06/17/conectar-postgresql-php-pdo-crud/
+
+https://code.tutsplus.com/es/tutorials/create-a-php-login-form--cms-33261
+
+/*Codigo Remplazado*/
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Unam</title>
+    <link href="CSS/bootstrap.min.css" rel="stylesheet">
+    <link href="CSS/myEstilo.css" rel="stylesheet">
+    <link href="CSS/myEstilo2.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!--Se coloca imagen y formulario-->
+    <div class="container mt-5">
+        <!--fila-->
+        <div class="row align-items-stretch">
+            <!--columna-->
+            <!--Se hace el breakpoint de la imagen-->
+            <div class="col bg d-none d-lg-block"></div>
+            <div class="col">
+                <h2 class="fw-bold text-center py-5">Bienvenidos</h2>
+                <div class="mb-4">
+                    <table class=" container">
+                        <th><label>Selecciona el Perfil: </label></th>
+                        <tr>
+                            <td class="td">Alumnos</td>
+
+                            <td class="td">Profesores</td>
+                        </tr>
+
+                        <tr>
+                            <td><a href="loginAlumno.html"><img src="IMG/estudiante.png" alt="Alumnos" /></a></td>
+
+                            <td><a href="loginProfesor.html"><img src="IMG/profesor.png" alt="Profesores" /></a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/bootstrap.bundle.min.js"></script>
+    <script src="JS/bootstrap.min.js"></script>
+</body>
+
+</html>
 
 
+<?php
+include_once 'conexion.php';
+session_start();
+ 
+/* User Login */
+$password = $_POST['password'];
+$hash_password= password_hash($password, PASSWORD_BCRYPT); //Password encryption 
+$query = $connection->prepare("SELECT id_profesor FROM public.profesor WHERE (email=:email or email=:email) AND contrasena=:hash_password"); 
+$query->bindParam("email", $usernameEmail,PDO::PARAM_STR) ;
+$query->bindParam("hash_password", $hash_password,PDO::PARAM_STR) ;
+$query->execute();
+$count=$query->rowCount();
+$data=$query->fetch(PDO::FETCH_OBJ);
+if($count){
+$_SESSION['id_profesor']=$data->uid; // Storing user session value
+return true;
+}else{
+return "<script>alert('Algo Salió mal Contacte al Admiistrador.');location.href =history.back();</script>";
+;
+echo "<script>alert('Algo Salió mal Contacte al Admiistrador.');location.href =history.back();</script>";
+} 
+?>
 
+
+-----------------
+include('conexion.php');
+session_start();
+ 
+if (isset($_POST['register'])) {
+ 
+    $ap_paterno = $_POST['ap_paterno'];
+    $ap_materno = $_POST['ap_materno'];
+    $nombre = $_POST['nombre'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $password_hash = password_hash($password, PASSWORD_BCRYPT);
+ 
+    $query = $connection->prepare("SELECT * FROM public.alumno WHERE email=:email");
+    $query->bindParam("email", $email, PDO::PARAM_STR);
+    $query->execute();
+ 
+    if ($query->rowCount() > 0) {
+      echo "<script>alert('El email ya esta Registrado.');location.href =history.back();</script>";
+    }
+ 
+    if ($query->rowCount() == 0) {
+        $query = $connection->prepare("INSERT INTO public.alumno(ap_paterno,ap_materno,nombre,email,contrasena) VALUES (:ap_paterno,:ap_materno,:nombre,:email,:password_hash)");
+        $query->bindParam("ap_paterno", $ap_paterno, PDO::PARAM_STR);
+        $query->bindParam("ap_materno", $ap_materno, PDO::PARAM_STR);
+        $query->bindParam("nombre", $nombre, PDO::PARAM_STR);
+        $query->bindParam("email", $email, PDO::PARAM_STR);
+        $query->bindParam("password_hash", $password_hash, PDO::PARAM_STR);
+        
+        $result = $query->execute();
+ 
+        if ($result) {
+          echo "<script>alert('Registro Exitoso.');location.href =history.back();</script>";
+        } else {
+          echo "<script>alert('Algo Salió mal Contacte al Admiistrador.');location.href =history.back();</script>";
+        }
+    }
+}
+?>
+
+-----------------
+<?php
+include_once 'conexion.php';
+session_start();
+
+$cnx = pg_connect($strCnx) or die ("Error de conexion.");
+//echo "Conexion exitosa<br>";
+echo "<script>alert('Registro Enviado');location.href =history.back();</script>";
+
+# Ejecutando la Consulta
+if ( $_POST ) {
+  if($rol=="Profesor")
+			{	
+				$query=("INSERT INTO profesor(ap_paterno,ap_materno,nombre,email,contrasena,rol) 
+VALUES ('$_POST[ap_paterno]','$_POST[ap_materno]','$_POST[nombre]','$_POST[email]','$_POST[contrasena]','$_POST[rol]') ");
+$ret = pg_query($cnx, $query);
+			}
+		else if ($rol=="Alumno")
+			{
+				$query=("INSERT INTO alumno(ap_paterno,ap_materno,nombre,email,contrasena,rol) 
+VALUES ('$_POST[ap_paterno]','$_POST[ap_materno]','$_POST[nombre]','$_POST[email]','$_POST[contrasena]','$_POST[rol]') ");
+$ret = pg_query($cnx, $query);
+			}
+}
+
+pg_close();
+
+?>
