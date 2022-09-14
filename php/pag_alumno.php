@@ -13,6 +13,7 @@ if(isset($_SESSION['nombredelusuario']))
 {
 	$usuarioingresado = $_SESSION['nombredelusuario'];
 	echo "<tr><td colspan='2' align='center'><h1>Bienvenido: $usuarioingresado </h1></td></tr>";
+    session_destroy();
 }
 else
 {

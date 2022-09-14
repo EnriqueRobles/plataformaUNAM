@@ -19,8 +19,9 @@ $rol = $_POST["rol"];
 			echo "<script>alert('El email ya esta Registrado.');location.href =history.back();</script>";
 		}else{
 				/*Registro*/
+				$pass_fuerte = password_hash($password, PASSWORD_BCRYPT);
 				$sqlgrabar=("INSERT INTO profesor(ap_paterno,ap_materno,nombre,email,contrasena,rol) 
-						VALUES ('$ap_paterno','$ap_materno','$nombre','$email','$password','$rol')");
+						VALUES ('$ap_paterno','$ap_materno','$nombre','$email','$$pass_fuerte','$rol')");
 				if(pg_query($connection,$sqlgrabar)){
 					echo "<script> alert('Usuario registrado con exito: $nombre'); location.href =history.back(); </script>";
 				}else {
@@ -35,8 +36,9 @@ $rol = $_POST["rol"];
 			echo "<script>alert('El email ya esta Registrado.');location.href =history.back();</script>";
 		}else{
 		/*Registro*/
+		$pass_fuerte = password_hash($password, PASSWORD_BCRYPT);
 		$sqlgrabar=("INSERT INTO alumno(ap_paterno,ap_materno,nombre,email,contrasena,rol) 
-					VALUES ('$ap_paterno','$ap_materno','$nombre','$email','$password','$rol')");
+					VALUES ('$ap_paterno','$ap_materno','$nombre','$email','$pass_fuerte','$rol')");
 			if(pg_query($connection,$sqlgrabar)){
 				echo "<script> alert('Usuario registrado con exito: $nombre'); location.href =history.back(); </script>";
 			}else {
