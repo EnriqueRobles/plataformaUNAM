@@ -16,6 +16,7 @@ if(isset($_SESSION['nombredelusuario']))
 }
 else
 {
+    echo "<script> alert('Usuario, contraseña o rol incorrecto.');window.location= '../index.html' </script>";
 	header('location: ../index.html');
 }
 ?>

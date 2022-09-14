@@ -1,4 +1,4 @@
-<ti<title>Plataforma Unam</title>
+<title>Plataforma Unam</title>
 <link href="../CSS/bootstrap.min.css" rel="stylesheet">
 <link href="../CSS/myEstilo.css" rel="stylesheet">
 <link href="../CSS/myEstilo2.css" rel="stylesheet">
@@ -16,6 +16,7 @@ if(isset($_SESSION['nombredelusuario']))
 }
 else
 {
+    echo "<script> alert('Usuario, contraseña o rol incorrecto.');window.location= '../index.html' </script>";
 	header('location: ../index.html');
 }
 ?>
