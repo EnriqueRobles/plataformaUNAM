@@ -8,9 +8,13 @@ $pass = $_POST["password"];
 $rol = $_POST["rol"];
 
 if($rol=="Profesor"){	
-		$queryusuario2 = pg_query($connection,"SELECT * FROM public.profesor WHERE email ='$usu' and contrasena = '$pass' and rol = '$rol'");
+	$consulta = sprintf("SELECT contrasena FROM public.profesor WHERE email ='%s' and rol = '%s';",
+                pg_escape_string($usu), pg_escape_string($rol));
+	$fila = pg_fetch_assoc(pg_query($connection, $consulta));
+		/*$queryusuario2 = pg_query($connection,"SELECT contrasena FROM public.profesor WHERE email ='$usu' and rol = '$rol'");
 		$nr2 = pg_num_rows($queryusuario2);  
-		if ($nr2 == 1 ) {
+		$fila = pg_fetch_assoc($pass);*/
+		if ($fila && password_verify($pass, $fila['contrasena'])) {
 			$_SESSION['nombredelusuario']=$usu;
 			header("Location: pag_profesor.php");
 		}else{
@@ -18,9 +22,12 @@ if($rol=="Profesor"){
 			pg_close();
 		}	
 }else if ($rol=="Alumno"){
-	$queryusuario = pg_query($connection,"SELECT * FROM public.alumno WHERE email ='$usu' and contrasena = '$pass' and rol = '$rol'");
-	$nr = pg_num_rows($queryusuario);  
-		if ($nr == 1) {
+	/*$queryusuario = pg_query($connection,"SELECT * FROM public.alumno WHERE email ='$usu' and contrasena = '$pass' and rol = '$rol'");
+	$nr = pg_num_rows($queryusuario);  */
+	$consulta2 = sprintf("SELECT contrasena FROM public.alumno WHERE email ='%s' and rol = '%s';",
+		pg_escape_string($usu), pg_escape_string($rol));
+	$fila2 = pg_fetch_assoc(pg_query($connection, $consulta2));
+		if ($fila2 && password_verify($pass, $fila2['contrasena'])) {
 			$_SESSION['nombredelusuario']=$usu;
 			header("Location: pag_alumno.php");
 		}else{
