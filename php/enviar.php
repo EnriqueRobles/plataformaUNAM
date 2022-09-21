@@ -11,25 +11,8 @@ $email = $_POST["email"];
 $password = $_POST["password"];
 $rol = $_POST["rol"];
 
-	if($rol=="Profesor"){	
-		$query = ("SELECT * FROM profesor WHERE email= '$email'");
-		$result= pg_query($connection,$query);
-		$rows= pg_num_rows($result);
-		if ($rows >0) {
-			echo "<script>alert('El email ya esta Registrado.');location.href =history.back();</script>";
-		}else{
-				/*Registro*/
-				$pass_fuerte = password_hash($password, PASSWORD_DEFAULT);
-				$sqlgrabar=("INSERT INTO profesor(ap_paterno,ap_materno,nombre,email,contrasena,rol) 
-						VALUES ('$ap_paterno','$ap_materno','$nombre','$email','$pass_fuerte','$rol')");
-				if(pg_query($connection,$sqlgrabar)){
-					echo "<script> alert('Usuario registrado con exito: $nombre'); location.href =history.back(); </script>";
-				}else {
-					echo "Error: ".$sql."<br>".pg_error($conn);
-				}
-			}	
-	}else if ($rol=="Alumno"){
-		$query = ("SELECT * FROM profesor WHERE email= '$email'");
+	if ($rol=="Alumno"){
+		$query = ("SELECT * FROM alumno WHERE email= '$email'");
 		$result= pg_query($connection,$query);
 		$rows= pg_num_rows($result);
 		if ($rows >0) {
@@ -44,8 +27,8 @@ $rol = $_POST["rol"];
 			}else {
 				echo "Error: ".$sql."<br>".pg_error($conn);
 			}
-	}
-} 
-pg_close();
+		}
+	} 
+	pg_close();
 }
 ?>
