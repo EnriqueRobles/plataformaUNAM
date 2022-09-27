@@ -3,10 +3,10 @@ include('conexion.php');
 session_start();
 
 if(isset($_POST["register"])){
+$num_trabajador = $_POST["num_trabajador"];
 $ap_paterno = $_POST["ap_paterno"];
 $ap_materno = $_POST["ap_materno"];
 $nombre = $_POST["nombre"];
-$num_trabajador = $_POST["num_trabajador"];
 $email = $_POST["email"];
 $password = $_POST["password"];
 $rol = $_POST["rol"];
@@ -26,9 +26,9 @@ $rol = $_POST["rol"];
       echo "<script>alert('Número de Trabajador inválido.');location.href =history.back();</script>";
     }else{
 				/*Registro*/
-				$pass_fuerte = password_hash($password, PASSWORD_DEFAULT);
-				$sqlgrabar=("INSERT INTO profesor(ap_paterno,ap_materno,nombre,email,contrasena,rol) 
-						VALUES ('$ap_paterno','$ap_materno','$nombre','$email','$pass_fuerte','$rol')");
+				//$pass_fuerte = password_hash($password, PASSWORD_DEFAULT);
+				$sqlgrabar=("INSERT INTO profesor(num_trabajador,ap_paterno,ap_materno,nombre,email,contrasena,rol) 
+						VALUES ('$num_trabajador','$ap_paterno','$ap_materno','$nombre','$email','$password','$rol')");
 				if(pg_query($connection,$sqlgrabar)){
 					echo "<script> alert('Usuario registrado con exito: $nombre'); location.href =history.back(); </script>";
 				}else {

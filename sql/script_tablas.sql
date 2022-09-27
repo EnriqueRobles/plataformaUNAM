@@ -11,12 +11,12 @@ create table alumno(
 
 --tabla profesor
 create table profesor(
-	id_profesor serial primary key,
+	num_trabajador integer not null primary key,
 	ap_paterno varchar(150) not null,
 	ap_materno varchar(150) not null,
 	nombre varchar(150) not null,
 	email varchar(150) not null,
-	contrasena varchar(255) not null,
+	contrasena varchar(10) not null,
 	rol varchar(200) not null
 );
 
