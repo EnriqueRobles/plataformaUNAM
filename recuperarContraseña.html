@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma Unam</title>
+    <title>Recuperar Contraseña</title>
     <link href="CSS/bootstrap.min.css" rel="stylesheet">
     <link href="CSS/myEstilo.css" rel="stylesheet">
     <link href="CSS/myEstilo2.css" rel="stylesheet">
@@ -22,25 +22,15 @@
             <!--Se hace el breakpoint de la imagen-->
             <div class="col bg d-none d-lg-block"></div>
             <div class="col">
-                <h2 class="fw-bold text-center py-5">Bienvenido</h2>
-                <!--Formulario login-->
-                <form method="post" action="php/login.php">
-                    <div class="mb-4 "><label for="inciar" class="form-label fw-bold">Iniciar Sesión</label></div>
-                    <!--Campos a Rellenar-->
+                <h2 class="fw-bold text-center py-5">Recuperar Contraseña</h2>
+                <!--Formulario recuperar-->
+                <form method="post" action="php/recuperar.php">
+                <!--Campos a Rellenar-->
                     <div class="mb-4">
                         <label for="email" class="form-label fw-bold">&#128273; Ingresar Correo</label>
                         <input type="email" class="form-control" name="email" required>
                     </div>
-                    <div class="mb-1">
-                        <label for="password" class="form-label fw-bold">&#128274; Ingresar Contraseña</label>
-                        <input type="password" class="form-control" id="txtpassword" name="password" maxlength="8"
-                            minlength="2" required>
-                    </div>
-
                     <div class="mb-2">
-                        <input type="checkbox" onclick="verpassword()"><label for="mostrar" class="form-label">Mostrar
-                            Contraseña</label>
-                        <br>
                         <label for="rol" class="form-label fw-bold">Rol</label>
                         <select name="rol">
                             <option value="0" style="display:none;"><label>Seleccionar</label></option>
@@ -50,19 +40,14 @@
                     </div>
                     <!--Boton-->
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary" name="Ingresar" value="Ingresar">Iniciar
-                            Sesión</button>
+                        <button type="submit" class="btn btn-primary" name="Ingresar" value="Ingresar">Enviar</button>
                         <button type="reset" class="btn btn-primary mt-1" name="Cancelar"
                             value="Cancelar">Cancelar</button>
                     </div>
                 </form>
                 <!--Link Registro-->
                 <div class="my-3">
-                    <span>No tienes cuenta? <a class="a" href="registroAlumno.html">Registro Alumno</a> </span>
-                    <br>
-                    <span>No tienes cuenta? <a class="a" href="registroProfesor.html">Registro Profesor</a> </span>
-                    <br>
-                    <a class="a" href="recuperarContraseña.html">Recuperar Contraseña</a>
+                    <a class="a" href="index.html">Página Principal</a>
                 </div>
             </div>
         </div>
@@ -70,15 +55,4 @@
     <script src="JS/bootstrap.bundle.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
 </body>
-<script>
-    function verpassword() {
-        var tipo = document.getElementById("txtpassword");
-        if (tipo.type == "password") {
-            tipo.type = "text";
-        }
-        else {
-            tipo.type = "password";
-        }
-    }
-</script>
 </html>
